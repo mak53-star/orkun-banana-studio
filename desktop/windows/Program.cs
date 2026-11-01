@@ -192,8 +192,8 @@ internal sealed class StudioWindow : Form
         keysOpen = true;
         try
         {
-            using var dialog = new Form { Text = "Provider API Keys", Width = 670, Height = 480, StartPosition = FormStartPosition.CenterParent, FormBorderStyle = FormBorderStyle.FixedDialog, MaximizeBox = false, MinimizeBox = false, BackColor = Color.FromArgb(22, 27, 34), ForeColor = Color.Gainsboro };
-            var grid = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(20), ColumnCount = 3, RowCount = 8, AutoSize = true };
+            using var dialog = new Form { Text = "Provider API Keys", AutoScaleMode = AutoScaleMode.Dpi, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, StartPosition = FormStartPosition.CenterParent, FormBorderStyle = FormBorderStyle.FixedDialog, MaximizeBox = false, MinimizeBox = false, BackColor = Color.FromArgb(22, 27, 34), ForeColor = Color.Gainsboro };
+            var grid = new TableLayoutPanel { Location = Point.Empty, Padding = new Padding(20, 20, 20, 28), ColumnCount = 3, RowCount = 8, AutoSize = true };
             var info = new Label { Text = "Add only the providers you use. OpenRouter covers text, images and supported Seedance video; fal.ai covers images and video. Select routes in AI settings. Keys stay in Windows Credential Manager. Blank fields keep saved keys. Remove clears a key.", AutoSize = true, MaximumSize = new Size(600, 0) };
             grid.Controls.Add(info, 0, 0); grid.SetColumnSpan(info, 3);
             var rows = new List<(string Name, TextBox Field, CheckBox Remove)>();
@@ -205,8 +205,8 @@ internal sealed class StudioWindow : Form
                 grid.Controls.Add(new Label { Text = provider.Label, AutoSize = true, Anchor = AnchorStyles.Left }, 0, row);
                 grid.Controls.Add(field, 1, row); grid.Controls.Add(remove, 2, row++); rows.Add((provider.Name, field, remove));
             }
-            var buttons = new FlowLayoutPanel { AutoSize = true, FlowDirection = FlowDirection.RightToLeft, Dock = DockStyle.Fill };
-            var save = new Button { Text = "Save", DialogResult = DialogResult.OK }; var cancel = new Button { Text = "Cancel", DialogResult = DialogResult.Cancel };
+            var buttons = new FlowLayoutPanel { AutoSize = true, FlowDirection = FlowDirection.RightToLeft, Dock = DockStyle.Fill, Margin = new Padding(0, 12, 0, 0) };
+            var save = new Button { Text = "Save", AutoSize = true, MinimumSize = new Size(88, 34), DialogResult = DialogResult.OK }; var cancel = new Button { Text = "Cancel", AutoSize = true, MinimumSize = new Size(88, 34), DialogResult = DialogResult.Cancel };
             buttons.Controls.Add(save); buttons.Controls.Add(cancel); grid.Controls.Add(buttons, 0, row); grid.SetColumnSpan(buttons, 3);
             dialog.Controls.Add(grid); dialog.AcceptButton = save; dialog.CancelButton = cancel;
             if (dialog.ShowDialog(this) != DialogResult.OK) return;
