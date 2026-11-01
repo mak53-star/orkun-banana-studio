@@ -3,18 +3,17 @@
 Son güncelleme: 2026-11-01
 
 ## Şu an
-- Fork açıldı, proje dosyaları (CLAUDE.md, KARARLAR.md, DURUM.md) eklendi.
-- Henüz kod değişikliği yok.
+- Windows derleme görevi BİTTİ: tüm CLAUDE.md komutları hatasız geçti, `BananaStudio.exe` açılıyor,
+  test anahtarı Credential Manager'a kaydoldu (`FAL_KEY`), mock üretim testi geçti.
+- Ortam: .NET SDK 8.0.427 kuruldu (CLAUDE.md'deki 8.0.426'dan bir sürüm yeni, sorun yok).
+- Açık hata: Provider API Keys penceresi sağdan kesik, Kaydet düğmesi görünmüyor
+  (`docs/WINDOWS-HATALAR.md`).
 
-## Sıradaki görev: Windows'ta derle ve çalıştır
+## Sıradaki görev: Windows kullanım hataları
 Bitti ölçütü:
-- CLAUDE.md'deki Windows derleme komutlarının hepsi hatasız geçer.
-- `BananaStudio.exe` açılır, ayarlarda API anahtarı Credential Manager'a kaydedilir.
-- Mock sağlayıcıyla (`test-local-generation.mjs`) bir görsel üretimi başarılı.
-- Karşılaşılan her hata `docs/WINDOWS-HATALAR.md` dosyasına yazılır
-  (adım, hata mesajı, düzeltme).
+- Provider API Keys penceresi tam görünür, Kaydet düğmesine fareyle basılır (DPI/ölçek dahil).
+- Pano, dosya seçici, kısayollar, tam ekran kontrol edilir; her hata `docs/WINDOWS-HATALAR.md`'ye yazılır.
 
 ## Sonraki görevler
-1. Windows kullanım hataları: pano, dosya seçici, kısayollar, tam ekran, DPI.
-2. Marka profilleri (KARARLAR.md'deki açık soru netleşince).
-3. Maliyet logu ve bütçe eşiği.
+1. Marka profilleri (KARARLAR.md'deki açık soru netleşince).
+2. Maliyet logu ve bütçe eşiği (açık soru: aylık $ ve uyarı mı durdurma mı).
