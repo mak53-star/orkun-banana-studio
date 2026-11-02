@@ -1,23 +1,32 @@
 # Durum
 
-Son güncelleme: 2026-11-01
+Son güncelleme: 2026-11-02
 
-## Şu an
-- Windows derleme görevi BİTTİ: tüm CLAUDE.md komutları hatasız geçti, `BananaStudio.exe` açılıyor,
-  test anahtarı Credential Manager'a kaydoldu (`FAL_KEY`), mock üretim testi geçti.
-- Ortam: .NET SDK 8.0.427 kuruldu (CLAUDE.md'deki 8.0.426'dan bir sürüm yeni, sorun yok).
-- Provider API Keys penceresi düzeltildi (DPI/otomatik boyut), ekranda doğrulandı.
-  Save'e fareyle basma ve kalan kontroller aşağıda. Ayrıntı: `docs/WINDOWS-HATALAR.md`.
-- Kod değişikliği yalnızca `desktop/windows/Program.cs`. Commit edilmedi (testler çalıştırılmadı).
+## Son yapılan
+- Windows derleme görevi BİTTİ: CLAUDE.md komutları geçti, `BananaStudio.exe` açılıyor,
+  `FAL_KEY` Credential Manager'a kaydoldu, mock üretim testi geçti.
+- Windows kullanım hataları görevi BİTTİ: Provider API Keys penceresi DPI'ya göre
+  ölçekleniyor ve otomatik boyutlanıyor (`desktop/windows/Program.cs`, `ShowKeys`).
+  Elle doğrulandı: Save'e fareyle basma, `Ctrl+,`, `F11`/`Esc`, metin ve görsel pano.
+  `npm test`: 334 geçti, 0 hata, 4 atlandı.
+- Dal: `windows-kullanim-hatalari` (fork'a push edildi, PR açılmadı).
+- Ortam: .NET SDK 8.0.427 kurulu (CLAUDE.md 8.0.426 diyor, sorun yok). Başlat menüsüne
+  "Banana Studio" kısayolu eklendi (proje dışı, kullanıcı klasörü).
+- Not: paketlemeden önce `BananaStudio.exe` kapalı olmalı, yoksa `EPERM`.
+- Hata kayıtları: `docs/WINDOWS-HATALAR.md`.
 
-## Sıradaki görev: Windows kullanım hataları
-Bitti ölçütü:
-- [x] Provider API Keys penceresi tam görünür (Save'e fareyle basma ayrıca denenecek).
-- Elle kontrol sonucu: F11/Esc, metin ve görsel pano ÇALIŞTI. Açık: Saved References paneli
-  ilk açılışta kesik görünüyor; Save'e fareyle basma ve web odaklıyken Ctrl+, denenmedi;
-  indirme ve ikinci monitör test edilemedi (galeri boş, ikinci ekran yok).
-- [ ] Pano, dosya seçici, kısayollar, tam ekran kontrol edilir; her hata `docs/WINDOWS-HATALAR.md`'ye yazılır.
+## Sıradaki 3 iş
+1. Saved References paneli ilk açılışta kesik görünüyor, "Edit" deyince düzeliyor
+   (web arayüzü, `src/`). Bitti ölçütü: panel ilk açılışta tam görünür.
+   Ayrı oturum: bu web arayüzü işi, Windows kabuğundan farklı.
+2. Marka profilleri (KARARLAR.md'deki açık soru netleşince).
+3. Maliyet logu ve bütçe eşiği.
 
-## Sonraki görevler
-1. Marka profilleri (KARARLAR.md'deki açık soru netleşince).
-2. Maliyet logu ve bütçe eşiği (açık soru: aylık $ ve uyarı mı durdurma mı).
+## Test edilemeyenler
+- Görsel indirme ("Farklı kaydet") ve ikinci monitör/DPI: galeri boş, ikinci ekran yok.
+  Veri ve donanım olunca tekrar bakılacak.
+
+## Bekleyen kararlar
+- Marka profilleri: KARARLAR.md'deki açık soru.
+- Maliyet logu: aylık $ bütçe ve uyarı mı durdurma mı.
+- `windows-kullanim-hatalari` dalı `main`'e alınsın mı (PR/merge)?
